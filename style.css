@@ -1,0 +1,767 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #9b59b6 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    cursor: none;
+    /* Hide default cursor for magic effect */
+}
+
+/* Magic cursor follower */
+.magic-cursor {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 20px;
+    animation: sparkle 1s infinite;
+    transition: all 0.1s ease;
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.2) rotate(180deg);
+        opacity: 0.8;
+    }
+}
+
+/* Particle background */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, #ffd700, #ffed4e);
+    border-radius: 50%;
+    animation: float 6s infinite linear;
+    box-shadow: 0 0 10px #ffd700;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Floating orbs */
+.floating-orbs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(155, 89, 182, 0.3));
+    animation: floatOrb 8s infinite ease-in-out;
+    box-shadow: 0 0 30px rgba(155, 89, 182, 0.5);
+}
+
+.orb-1 {
+    width: 60px;
+    height: 60px;
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 40px;
+    height: 40px;
+    top: 20%;
+    right: 15%;
+    animation-delay: 1s;
+}
+
+.orb-3 {
+    width: 80px;
+    height: 80px;
+    bottom: 15%;
+    left: 20%;
+    animation-delay: 2s;
+}
+
+.orb-4 {
+    width: 30px;
+    height: 30px;
+    bottom: 30%;
+    right: 10%;
+    animation-delay: 3s;
+}
+
+.orb-5 {
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    left: 5%;
+    animation-delay: 4s;
+}
+
+@keyframes floatOrb {
+
+    0%,
+    100% {
+        transform: translateY(0px) translateX(0px) scale(1);
+    }
+
+    25% {
+        transform: translateY(-20px) translateX(10px) scale(1.1);
+    }
+
+    50% {
+        transform: translateY(-40px) translateX(-10px) scale(0.9);
+    }
+
+    75% {
+        transform: translateY(-20px) translateX(15px) scale(1.05);
+    }
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    z-index: 10;
+}
+
+/* Enhanced decorative stars */
+.star {
+    position: absolute;
+    font-size: 28px;
+    z-index: 15;
+    filter: drop-shadow(0 0 10px currentColor);
+    animation-duration: 2s !important;
+}
+
+.star-1 {
+    top: 50px;
+    left: 100px;
+    color: #ffd700;
+    animation-delay: 0s !important;
+}
+
+.star-2 {
+    top: 80px;
+    right: 120px;
+    color: #ff6b6b;
+    animation-delay: 0.5s !important;
+}
+
+.star-3 {
+    bottom: 150px;
+    right: 80px;
+    color: #4ecdc4;
+    animation-delay: 1s !important;
+}
+
+.star-4 {
+    bottom: 120px;
+    left: 90px;
+    color: #45b7d1;
+    animation-delay: 1.5s !important;
+}
+
+.star-5 {
+    top: 120px;
+    left: 50%;
+    color: #96ceb4;
+    animation-delay: 2s !important;
+}
+
+/* Magical glow rings */
+.glow-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    animation: expandRing 4s infinite ease-in-out;
+}
+
+.ring-1 {
+    width: 500px;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: 0s;
+}
+
+.ring-2 {
+    width: 600px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: 1.3s;
+}
+
+.ring-3 {
+    width: 700px;
+    height: 700px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: 2.6s;
+}
+
+@keyframes expandRing {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Wheel container */
+.wheel-container {
+    position: relative;
+    width: 450px;
+    height: 450px;
+    filter: drop-shadow(0 0 30px rgba(155, 89, 182, 0.8));
+}
+
+/* Enhanced location pin */
+.location-pin {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 25;
+    animation: pinBounce 2s infinite ease-in-out;
+}
+
+@keyframes pinBounce {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0px);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+.pin-head {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    border: 4px solid #fff;
+    position: relative;
+    box-shadow: 0 0 20px rgba(231, 76, 60, 0.6);
+    animation: pinGlow 2s infinite alternate;
+}
+
+@keyframes pinGlow {
+    0% {
+        box-shadow: 0 0 20px rgba(231, 76, 60, 0.6);
+    }
+
+    100% {
+        box-shadow: 0 0 30px rgba(231, 76, 60, 1);
+    }
+}
+
+.pin-head::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.pin-point {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 18px solid #c0392b;
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.3));
+}
+
+/* Wheel glow effect */
+.wheel-glow {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 490px;
+    height: 490px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(155, 89, 182, 0.4), transparent 70%);
+    animation: wheelGlow 3s infinite ease-in-out;
+    z-index: 5;
+}
+
+@keyframes wheelGlow {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
+
+/* Enhanced main wheel */
+.wheel {
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 10px solid #fff;
+    box-shadow:
+        0 0 40px rgba(0, 0, 0, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.2);
+    transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+    z-index: 10;
+}
+
+/* Enhanced wheel segments */
+.segment {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    transform-origin: bottom right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.segment:hover {
+    filter: brightness(1.2) saturate(1.3);
+    transform-origin: bottom right;
+}
+
+.segment span {
+    transform: rotate(-22.5deg);
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    font-size: 14px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+/* Segment sparkle effects */
+.segment-sparkle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent 50%);
+    animation: sparkleMove 3s infinite linear;
+    opacity: 0;
+}
+
+.segment:hover .segment-sparkle {
+    opacity: 1;
+}
+
+@keyframes sparkleMove {
+    0% {
+        transform: rotate(0deg) scale(0.8);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Enhanced segment colors with gradients and animations */
+.segment-1 {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+    transform: rotate(0deg);
+}
+
+.segment-2 {
+    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+    transform: rotate(45deg);
+}
+
+.segment-3 {
+    background: linear-gradient(45deg, #45b7d1, #3498db);
+    transform: rotate(90deg);
+}
+
+.segment-4 {
+    background: linear-gradient(45deg, #96ceb4, #85c1a3);
+    transform: rotate(135deg);
+}
+
+.segment-5 {
+    background: linear-gradient(45deg, #feca57, #ff9ff3);
+    transform: rotate(180deg);
+}
+
+.segment-6 {
+    background: linear-gradient(45deg, #ff9ff3, #f368e0);
+    transform: rotate(225deg);
+}
+
+.segment-7 {
+    background: linear-gradient(45deg, #a29bfe, #6c5ce7);
+    transform: rotate(270deg);
+}
+
+.segment-8 {
+    background: linear-gradient(45deg, #fd79a8, #e84393);
+    transform: rotate(315deg);
+}
+
+/* Enhanced center circle */
+.center-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #8e44ad, #9b59b6, #bb6bd9);
+    border-radius: 50%;
+    border: 6px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    box-shadow:
+        0 0 30px rgba(0, 0, 0, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.center-glow {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(155, 89, 182, 0.6), transparent 70%);
+    animation: centerGlow 2s infinite ease-in-out;
+}
+
+@keyframes centerGlow {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+.center-star {
+    font-size: 40px;
+    text-shadow: 0 0 20px currentColor;
+    z-index: 2;
+    animation-duration: 1s !important;
+}
+
+.center-ring {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 130px;
+    height: 130px;
+    border: 3px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    animation: ringRotate 4s infinite linear;
+}
+
+@keyframes ringRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Enhanced spin button */
+.spin-button {
+    background: linear-gradient(135deg, #e74c3c, #c0392b, #a93226);
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        inset 0 2px 10px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    z-index: 15;
+    animation-duration: 3s !important;
+}
+
+.button-text {
+    position: relative;
+    z-index: 2;
+}
+
+.button-glow {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+    border-radius: 50px;
+    opacity: 0;
+    animation: buttonGlow 2s infinite ease-in-out;
+    z-index: 1;
+}
+
+@keyframes buttonGlow {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+}
+
+.button-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: 50px;
+}
+
+.spin-button:hover {
+    background: linear-gradient(135deg, #c0392b, #a93226, #922b21);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:
+        0 12px 35px rgba(0, 0, 0, 0.4),
+        inset 0 2px 15px rgba(255, 255, 255, 0.3);
+}
+
+.spin-button:hover .button-glow {
+    opacity: 1;
+}
+
+.spin-button:active {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.3),
+        inset 0 2px 10px rgba(255, 255, 255, 0.2);
+}
+
+.spin-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Enhanced spinning animation */
+.spinning {
+    animation: enhancedSpin 4s cubic-bezier(0.17, 0.67, 0.12, 0.99) forwards;
+}
+
+@keyframes enhancedSpin {
+    0% {
+        transform: rotate(0deg) scale(1);
+        filter: brightness(1) saturate(1);
+    }
+
+    25% {
+        transform: rotate(calc(var(--spin-degrees) * 0.3)) scale(1.02);
+        filter: brightness(1.1) saturate(1.2);
+    }
+
+    50% {
+        transform: rotate(calc(var(--spin-degrees) * 0.6)) scale(1.05);
+        filter: brightness(1.2) saturate(1.4);
+    }
+
+    75% {
+        transform: rotate(calc(var(--spin-degrees) * 0.85)) scale(1.02);
+        filter: brightness(1.1) saturate(1.2);
+    }
+
+    100% {
+        transform: rotate(var(--spin-degrees)) scale(1);
+        filter: brightness(1) saturate(1);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .wheel-container {
+        width: 350px;
+        height: 350px;
+    }
+
+    .wheel {
+        width: 350px;
+        height: 350px;
+    }
+
+    .wheel-glow {
+        width: 390px;
+        height: 390px;
+        top: -20px;
+        left: -20px;
+    }
+
+    .segment {
+        font-size: 14px;
+    }
+
+    .segment span {
+        font-size: 12px;
+    }
+
+    .center-circle {
+        width: 80px;
+        height: 80px;
+    }
+
+    .center-star {
+        font-size: 30px;
+    }
+
+    .spin-button {
+        padding: 15px 30px;
+        font-size: 16px;
+    }
+
+    .star {
+        font-size: 20px;
+    }
+
+    .orb {
+        transform: scale(0.7);
+    }
+}
+
+@media (max-width: 400px) {
+    .wheel-container {
+        width: 280px;
+        height: 280px;
+    }
+
+    .wheel {
+        width: 280px;
+        height: 280px;
+    }
+
+    .wheel-glow {
+        width: 320px;
+        height: 320px;
+    }
+
+    .center-circle {
+        width: 60px;
+        height: 60px;
+    }
+
+    .center-star {
+        font-size: 24px;
+    }
+
+    .segment span {
+        font-size: 10px;
+    }
+}

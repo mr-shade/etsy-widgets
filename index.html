@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical Spinning Wheel Widget</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- External libraries for enhanced animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+    <!-- Particle background -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Floating orbs -->
+    <div class="floating-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="orb orb-4"></div>
+        <div class="orb orb-5"></div>
+    </div>
+
+    <div class="container">
+        <!-- Enhanced decorative elements -->
+        <div class="star star-1 animate__animated animate__pulse animate__infinite">✨</div>
+        <div class="star star-2 animate__animated animate__pulse animate__infinite">🌟</div>
+        <div class="star star-3 animate__animated animate__pulse animate__infinite">⭐</div>
+        <div class="star star-4 animate__animated animate__pulse animate__infinite">💫</div>
+        <div class="star star-5 animate__animated animate__pulse animate__infinite">🌠</div>
+
+        <!-- Magical glow rings -->
+        <div class="glow-ring ring-1"></div>
+        <div class="glow-ring ring-2"></div>
+        <div class="glow-ring ring-3"></div>
+
+        <!-- Main wheel container with enhanced effects -->
+        <div class="wheel-container">
+            <!-- Location pin -->
+            <div class="location-pin">
+                <div class="pin-head"></div>
+                <div class="pin-point"></div>
+            </div>
+
+            <!-- Enhanced spinning wheel with glow effects -->
+            <div class="wheel-glow"></div>
+            <div class="wheel" id="wheel">
+                <div class="segment segment-1">
+                    <span>🎁 Prize 1</span>
+                    <div class="segment-sparkle"></div>
+                </div>
+                <div class="segment segment-2">
+                    <span>💎 Jackpot</span>
+                    <div class="segment-sparkle"></div>
+                </div>
+                <div class="segment segment-3">
+                    <span>🏆 Winner</span>
+                    <div class="segment-sparkle"></div>
+                </div>
+                <div class="segment segment-4">
+                    <span>🎊 Bonus</span>
+                    <div class="segment-sparkle"></div>
+                </div>
+                <div class="segment segment-5">
+                    <span>🌟 Lucky</span>
+                    <div class="segment-sparkle"></div>
+                </div>
+                <div class="segment segment-6">
+                    <span>💰 Cash</span>
+                    <div class="segment-sparkle"></div>
+                </div>
+                <div class="segment segment-7">
+                    <span>🎯 Target</span>
+                    <div class="segment-sparkle"></div>
+                </div>
+                <div class="segment segment-8">
+                    <span>🔥 Fire</span>
+                    <div class="segment-sparkle"></div>
+                </div>
+            </div>
+
+            <!-- Enhanced center circle with pulsing effects -->
+            <div class="center-circle">
+                <div class="center-glow"></div>
+                <div class="center-star animate__animated animate__pulse animate__infinite">🌟</div>
+                <div class="center-ring"></div>
+            </div>
+        </div>
+
+        <!-- Enhanced spin button with effects -->
+        <button class="spin-button animate__animated animate__heartBeat animate__infinite animate__slow"
+            onclick="spinWheel()">
+            <span class="button-text">🎰 SPIN THE WHEEL 🎰</span>
+            <div class="button-glow"></div>
+            <div class="button-particles"></div>
+        </button>
+
+        <!-- Magic wand cursor follower -->
+        <div class="magic-cursor" id="magicCursor">✨</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
