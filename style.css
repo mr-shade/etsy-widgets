@@ -220,7 +220,7 @@ body {
 /* Segment text styling - now properly rotated */
 .segment-text {
     font-family: 'Inter', sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
     fill: #000;
     dominant-baseline: middle;
