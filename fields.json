@@ -40,7 +40,7 @@
     }
   },
   {
-    "type": "number",
+    "type": "slider",
     "label": "Spin Duration (seconds)",
     "name": "spinDuration",
     "value": 4,
@@ -49,14 +49,27 @@
     "step": 0.5
   },
   {
+    "type": "dropdown",
+    "label": "Number of Segments",
+    "name": "segmentCount",
+    "value": 8,
+    "options": {
+      "4": "4 Segments",
+      "6": "6 Segments", 
+      "8": "8 Segments",
+      "10": "10 Segments",
+      "12": "12 Segments"
+    }
+  },
+  {
     "type": "colorpicker",
-    "label": "Wheel Primary Color",
+    "label": "Primary Segment Color",
     "name": "wheelPrimaryColor",
     "value": "#DDD6FE"
   },
   {
     "type": "colorpicker",
-    "label": "Wheel Secondary Color", 
+    "label": "Secondary Segment Color", 
     "name": "wheelSecondaryColor",
     "value": "#C4B5FD"
   },
@@ -73,12 +86,6 @@
     "value": "#8B5CF6"
   },
   {
-    "type": "colorpicker",
-    "label": "Star Color",
-    "name": "starColor",
-    "value": "#FFD700"
-  },
-  {
     "type": "dropdown",
     "label": "Font Family",
     "name": "fontFamily",
@@ -86,14 +93,14 @@
     "options": {
       "Bitcount Single": "Bitcount Single",
       "Inter": "Inter",
+      "Roboto": "Roboto",
       "Arial": "Arial",
       "Helvetica": "Helvetica",
-      "Times": "Times New Roman",
-      "Courier": "Courier New"
+      "Times": "Times New Roman"
     }
   },
   {
-    "type": "number",
+    "type": "slider",
     "label": "Font Size",
     "name": "fontSize",
     "value": 12,
@@ -101,7 +108,7 @@
     "max": 20
   },
   {
-    "type": "number",
+    "type": "slider",
     "label": "Wheel Size",
     "name": "wheelSize",
     "value": 300,
@@ -109,74 +116,26 @@
     "max": 500
   },
   {
-    "type": "number",
+    "type": "slider",
     "label": "Margin Top (%)",
     "name": "marginTop",
     "value": 0,
-    "min": -50,
-    "max": 50
+    "min": -30,
+    "max": 30
   },
   {
-    "type": "number",
+    "type": "slider",
     "label": "Margin Left (%)",
     "name": "marginLeft",
     "value": 0,
-    "min": -50,
-    "max": 50
+    "min": -30,
+    "max": 30
   },
   {
-    "type": "dropdown",
-    "label": "Text Alignment",
-    "name": "textAlignment",
-    "value": "center",
-    "options": {
-      "center": "Center",
-      "start": "Start",
-      "end": "End"
-    }
-  },
-  {
-    "type": "dropdown",
-    "label": "Long Text Handling",
-    "name": "longTextHandling",
-    "value": "truncate",
-    "options": {
-      "truncate": "Truncate with ...",
-      "wrap": "Wrap Text",
-      "shrink": "Shrink Font Size"
-    }
-  },
-  {
-    "type": "slider",
-    "label": "Point Value - Followers",
-    "name": "pointsFollower",
-    "value": 10,
-    "min": 0,
-    "max": 100
-  },
-  {
-    "type": "slider",
-    "label": "Point Value - Subscribers",
-    "name": "pointsSubscriber",
-    "value": 25,
-    "min": 0,
-    "max": 100
-  },
-  {
-    "type": "slider",
-    "label": "Point Value - Donations ($1)",
-    "name": "pointsDonation",
-    "value": 50,
-    "min": 0,
-    "max": 200
-  },
-  {
-    "type": "slider",
-    "label": "Point Value - Bits (100 bits)",
-    "name": "pointsBits",
-    "value": 30,
-    "min": 0,
-    "max": 150
+    "type": "toggle",
+    "label": "Show Popup Result",
+    "name": "showPopup",
+    "value": true
   },
   {
     "type": "toggle",
@@ -185,31 +144,7 @@
     "value": false
   },
   {
-    "type": "toggle",
-    "label": "Show Animated Stars",
-    "name": "showStars",
-    "value": true
-  },
-  {
-    "type": "toggle",
-    "label": "Enable Confetti Effect",
-    "name": "enableConfetti",
-    "value": true
-  },
-  {
-    "type": "colorpicker",
-    "label": "Confetti Color",
-    "name": "confettiColor",
-    "value": "#FFD700"
-  },
-  {
-    "type": "textarea",
-    "label": "Custom Prizes (one per line, max 8)",
-    "name": "customPrizes",
-    "value": "🎁 Amazing Prize A\n� Fantastic Prize B\n⭐ Super Prize C\n🎉 Awesome Prize D\n💎 Epic Prize E\n🌟 Great Prize F\n�🎊 Cool Prize G\n🏅 Best Prize H"
-  },
-  {
-    "type": "number",
+    "type": "slider",
     "label": "Hide After Seconds (0 = never)",
     "name": "hideAfterSeconds",
     "value": 10,
@@ -217,15 +152,75 @@
     "max": 60
   },
   {
-    "type": "toggle",
-    "label": "Infinite Entries Mode",
-    "name": "infiniteEntries",
-    "value": false
+    "type": "text",
+    "label": "Segment 1 Prize",
+    "name": "prize1",
+    "value": "🎁 Amazing Prize 1"
   },
   {
-    "type": "toggle",
-    "label": "Manual Spin Only",
-    "name": "manualSpinOnly",
-    "value": false
+    "type": "text",
+    "label": "Segment 2 Prize",
+    "name": "prize2",
+    "value": "🏆 Fantastic Prize 2"
+  },
+  {
+    "type": "text",
+    "label": "Segment 3 Prize",
+    "name": "prize3",
+    "value": "⭐ Super Prize 3"
+  },
+  {
+    "type": "text",
+    "label": "Segment 4 Prize",
+    "name": "prize4",
+    "value": "🎉 Awesome Prize 4"
+  },
+  {
+    "type": "text",
+    "label": "Segment 5 Prize",
+    "name": "prize5",
+    "value": "💎 Epic Prize 5"
+  },
+  {
+    "type": "text",
+    "label": "Segment 6 Prize",
+    "name": "prize6",
+    "value": "🌟 Great Prize 6"
+  },
+  {
+    "type": "text",
+    "label": "Segment 7 Prize",
+    "name": "prize7",
+    "value": "🎊 Cool Prize 7"
+  },
+  {
+    "type": "text",
+    "label": "Segment 8 Prize",
+    "name": "prize8",
+    "value": "🏅 Best Prize 8"
+  },
+  {
+    "type": "text",
+    "label": "Segment 9 Prize (if using 9+ segments)",
+    "name": "prize9",
+    "value": "✨ Bonus Prize 9"
+  },
+  {
+    "type": "text",
+    "label": "Segment 10 Prize (if using 10+ segments)",
+    "name": "prize10",
+    "value": "🎪 Special Prize 10"
+  },
+  {
+    "type": "text",
+    "label": "Segment 11 Prize (if using 11+ segments)",
+    "name": "prize11",
+    "value": "🎭 Theater Prize 11"
+  },
+  {
+    "type": "text",
+    "label": "Segment 12 Prize (if using 12 segments)",
+    "name": "prize12",
+    "value": "🎨 Artist Prize 12"
   }
 ]
