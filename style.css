@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Bitcount Single', monospace;
     background: transparent;
     min-height: 100vh;
     display: flex;
@@ -31,78 +31,32 @@ body {
     align-items: center;
 }
 
-/* Decorative stars around the wheel circle */
-.decorative-star {
+/* Random stars scattered around the wheel */
+.random-star {
     position: absolute;
-    font-size: 20px;
+    font-size: 18px;
     color: #FFD700;
-    z-index: 10;
-    animation: twinkle 2s ease-in-out infinite alternate;
+    z-index: 5;
+    animation: randomTwinkle 3s ease-in-out infinite;
+    pointer-events: none;
 }
 
-/* Position stars around the circle perimeter - closer to wheel */
-.star-1 {
-    left: 30px;
-    top: 40%;
-    transform: translateY(-50%);
-    animation: twinkle-top 2s ease-in-out infinite alternate;
+.random-star:nth-child(odd) {
     animation-delay: 0s;
 }
 
-.star-2 {
-    right: 30px;
-    top: 40%;
-    transform: translateY(-50%);
-    animation: twinkle-top 2s ease-in-out infinite alternate;
-    animation-delay: 0.5s;
-}
-
-.star-3 {
-    left: 30px;
-    bottom: 40%;
-    transform: translateY(50%);
-    animation: twinkle-bottom 2s ease-in-out infinite alternate;
-    animation-delay: 1s;
-}
-
-.star-4 {
-    right: 30px;
-    bottom: 40%;
-    transform: translateY(50%);
-    animation: twinkle-bottom 2s ease-in-out infinite alternate;
+.random-star:nth-child(even) {
     animation-delay: 1.5s;
 }
 
-@keyframes twinkle {
-    0% { 
-        opacity: 0.6; 
-        transform: scale(1);
+@keyframes randomTwinkle {
+    0%, 100% { 
+        opacity: 0.4; 
+        transform: scale(0.8);
     }
-    100% { 
+    50% { 
         opacity: 1; 
-        transform: scale(1.1);
-    }
-}
-
-@keyframes twinkle-top {
-    0% { 
-        opacity: 0.6; 
-        transform: translateY(-50%) scale(1);
-    }
-    100% { 
-        opacity: 1; 
-        transform: translateY(-50%) scale(1.1);
-    }
-}
-
-@keyframes twinkle-bottom {
-    0% { 
-        opacity: 0.6; 
-        transform: translateY(50%) scale(1);
-    }
-    100% { 
-        opacity: 1; 
-        transform: translateY(50%) scale(1.1);
+        transform: scale(1.2);
     }
 }
 
@@ -215,9 +169,9 @@ body {
 
 /* Segment text styling - now properly rotated */
 .segment-text {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Bitcount Single', monospace;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 400;
     fill: #000;
     dominant-baseline: middle;
 }
@@ -260,16 +214,8 @@ body {
         padding: 12px 20px;
     }
     
-    .decorative-star {
+    .random-star {
         font-size: 16px;
-    }
-    
-    .star-1, .star-3 {
-        left: 20px;
-    }
-    
-    .star-2, .star-4 {
-        right: 20px;
     }
 }
 
@@ -289,15 +235,7 @@ body {
         padding: 10px 15px;
     }
     
-    .decorative-star {
+    .random-star {
         font-size: 14px;
-    }
-    
-    .star-1, .star-3 {
-        left: 15px;
-    }
-    
-    .star-2, .star-4 {
-        right: 15px;
     }
 }
