@@ -19,12 +19,9 @@ function spinWheel() {
     
     isSpinning = true;
     const wheel = document.getElementById('wheel');
-    const button = document.getElementById('spinButton');
     const result = document.getElementById('result');
     
-    // Disable button and show spinning state
-    button.disabled = true;
-    button.textContent = 'SPINNING...';
+    // Hide previous result
     result.textContent = '';
     result.style.display = 'none';
     
@@ -65,9 +62,7 @@ function spinWheel() {
             result.classList.remove('celebrate');
         }, 1000);
         
-        // Reset button
-        button.disabled = false;
-        button.textContent = 'SPIN THE WHEEL';
+        // Reset spinning state
         isSpinning = false;
     }, 4000); // Wait for animation to complete
 }

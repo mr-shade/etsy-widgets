@@ -9,18 +9,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Background gradient stars around the wheel -->
-        <div class="star bg-star-1">⭐</div>
-        <div class="star bg-star-2">⭐</div>
-        <div class="star bg-star-3">⭐</div>
-        <div class="star bg-star-4">⭐</div>
-        <div class="star bg-star-5">⭐</div>
-        <div class="star bg-star-6">⭐</div>
-        <div class="star bg-star-7">⭐</div>
-        <div class="star bg-star-8">⭐</div>
-        <div class="star bg-star-9">⭐</div>
-        <div class="star bg-star-10">⭐</div>
-        
         <!-- Main wheel container -->
         <div class="wheel-container">
             <!-- Fixed map pointer at top of circle -->
@@ -35,7 +23,7 @@
             </div>
             
             <!-- Fixed center star (doesn't rotate) -->
-            <div class="center-star-fixed">
+            <div class="center-star-fixed" onclick="spinWheel()">
                 <img src="https://cdn.jsdelivr.net/gh/free-whiteboard-online/Free-Erasorio-Alternative-for-Collaborative-Design@f0a7b9c20359825416316a5048d9a26ee1138810/uploads/2025-07-28T11-42-07-669Z-1c4iesuae.svg" 
                      alt="Star" 
                      width="30" 
@@ -88,9 +76,6 @@
                 <circle cx="150" cy="150" r="20" fill="#8B5CF6" stroke="#000" stroke-width="2"/>
             </svg>
         </div>
-        
-        <!-- Spin button -->
-        <button class="spin-button" id="spinButton" onclick="spinWheel()">SPIN THE WHEEL</button>
         
         <!-- Result display -->
         <div class="result" id="result"></div>
