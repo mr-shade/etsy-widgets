@@ -5,24 +5,27 @@
     "name": "triggerEvent",
     "value": "command",
     "options": {
-      "command": "Chat Command (!spin)",
+      "command": "Chat Command",
       "follow": "New Follower",
       "donation": "Donation",
       "subscriber": "New Subscriber",
-      "cheer": "Bits/Cheer"
+      "cheer": "Bits/Cheer",
+      "manual": "Manual Only"
     }
   },
   {
     "type": "text",
-    "label": "Command Name",
-    "name": "commandName",
+    "label": "Spin Command",
+    "name": "spinCommand",
     "value": "!spin"
   },
   {
     "type": "number",
     "label": "Cooldown (seconds)",
     "name": "cooldown",
-    "value": 30
+    "value": 30,
+    "min": 0,
+    "max": 300
   },
   {
     "type": "dropdown",
@@ -37,51 +40,192 @@
     }
   },
   {
-    "type": "text",
-    "label": "Prize A",
-    "name": "prizeA",
-    "value": "🎁 Prize A"
+    "type": "number",
+    "label": "Spin Duration (seconds)",
+    "name": "spinDuration",
+    "value": 4,
+    "min": 2,
+    "max": 10,
+    "step": 0.5
   },
   {
-    "type": "text",
-    "label": "Prize B",
-    "name": "prizeB",
-    "value": "🏆 Prize B"
+    "type": "colorpicker",
+    "label": "Wheel Primary Color",
+    "name": "wheelPrimaryColor",
+    "value": "#DDD6FE"
   },
   {
-    "type": "text",
-    "label": "Prize C",
-    "name": "prizeC",
-    "value": "⭐ Prize C"
+    "type": "colorpicker",
+    "label": "Wheel Secondary Color", 
+    "name": "wheelSecondaryColor",
+    "value": "#C4B5FD"
   },
   {
-    "type": "text",
-    "label": "Prize D",
-    "name": "prizeD",
-    "value": "🎉 Prize D"
+    "type": "colorpicker",
+    "label": "Text Color",
+    "name": "textColor",
+    "value": "#000000"
   },
   {
-    "type": "text",
-    "label": "Prize E",
-    "name": "prizeE",
-    "value": "💎 Prize E"
+    "type": "colorpicker",
+    "label": "Pointer Color",
+    "name": "pointerColor",
+    "value": "#8B5CF6"
   },
   {
-    "type": "text",
-    "label": "Prize F",
-    "name": "prizeF",
-    "value": "🌟 Prize F"
+    "type": "colorpicker",
+    "label": "Star Color",
+    "name": "starColor",
+    "value": "#FFD700"
   },
   {
-    "type": "text",
-    "label": "Prize G",
-    "name": "prizeG",
-    "value": "🎊 Prize G"
+    "type": "dropdown",
+    "label": "Font Family",
+    "name": "fontFamily",
+    "value": "Bitcount Single",
+    "options": {
+      "Bitcount Single": "Bitcount Single",
+      "Inter": "Inter",
+      "Arial": "Arial",
+      "Helvetica": "Helvetica",
+      "Times": "Times New Roman",
+      "Courier": "Courier New"
+    }
   },
   {
-    "type": "text",
-    "label": "Prize H",
-    "name": "prizeH",
-    "value": "🏅 Prize H"
+    "type": "number",
+    "label": "Font Size",
+    "name": "fontSize",
+    "value": 12,
+    "min": 8,
+    "max": 20
+  },
+  {
+    "type": "number",
+    "label": "Wheel Size",
+    "name": "wheelSize",
+    "value": 300,
+    "min": 200,
+    "max": 500
+  },
+  {
+    "type": "number",
+    "label": "Margin Top (%)",
+    "name": "marginTop",
+    "value": 0,
+    "min": -50,
+    "max": 50
+  },
+  {
+    "type": "number",
+    "label": "Margin Left (%)",
+    "name": "marginLeft",
+    "value": 0,
+    "min": -50,
+    "max": 50
+  },
+  {
+    "type": "dropdown",
+    "label": "Text Alignment",
+    "name": "textAlignment",
+    "value": "center",
+    "options": {
+      "center": "Center",
+      "start": "Start",
+      "end": "End"
+    }
+  },
+  {
+    "type": "dropdown",
+    "label": "Long Text Handling",
+    "name": "longTextHandling",
+    "value": "truncate",
+    "options": {
+      "truncate": "Truncate with ...",
+      "wrap": "Wrap Text",
+      "shrink": "Shrink Font Size"
+    }
+  },
+  {
+    "type": "slider",
+    "label": "Point Value - Followers",
+    "name": "pointsFollower",
+    "value": 10,
+    "min": 0,
+    "max": 100
+  },
+  {
+    "type": "slider",
+    "label": "Point Value - Subscribers",
+    "name": "pointsSubscriber",
+    "value": 25,
+    "min": 0,
+    "max": 100
+  },
+  {
+    "type": "slider",
+    "label": "Point Value - Donations ($1)",
+    "name": "pointsDonation",
+    "value": 50,
+    "min": 0,
+    "max": 200
+  },
+  {
+    "type": "slider",
+    "label": "Point Value - Bits (100 bits)",
+    "name": "pointsBits",
+    "value": 30,
+    "min": 0,
+    "max": 150
+  },
+  {
+    "type": "toggle",
+    "label": "Hide Widget When Inactive",
+    "name": "hideWhenInactive",
+    "value": false
+  },
+  {
+    "type": "toggle",
+    "label": "Show Animated Stars",
+    "name": "showStars",
+    "value": true
+  },
+  {
+    "type": "toggle",
+    "label": "Enable Confetti Effect",
+    "name": "enableConfetti",
+    "value": true
+  },
+  {
+    "type": "colorpicker",
+    "label": "Confetti Color",
+    "name": "confettiColor",
+    "value": "#FFD700"
+  },
+  {
+    "type": "textarea",
+    "label": "Custom Prizes (one per line, max 8)",
+    "name": "customPrizes",
+    "value": "🎁 Amazing Prize A\n� Fantastic Prize B\n⭐ Super Prize C\n🎉 Awesome Prize D\n💎 Epic Prize E\n🌟 Great Prize F\n�🎊 Cool Prize G\n🏅 Best Prize H"
+  },
+  {
+    "type": "number",
+    "label": "Hide After Seconds (0 = never)",
+    "name": "hideAfterSeconds",
+    "value": 10,
+    "min": 0,
+    "max": 60
+  },
+  {
+    "type": "toggle",
+    "label": "Infinite Entries Mode",
+    "name": "infiniteEntries",
+    "value": false
+  },
+  {
+    "type": "toggle",
+    "label": "Manual Spin Only",
+    "name": "manualSpinOnly",
+    "value": false
   }
 ]

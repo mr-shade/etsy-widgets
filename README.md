@@ -2,18 +2,90 @@
 
 # StreamElements Spinning Wheel Widget
 
-A customizable spinning prize wheel widget for StreamElements with chat command integration.
+A fully customizable spinning prize wheel widget for StreamElements with comprehensive buyer customization options and chat command integration.
 
-## Features
+## 🎨 **Complete Customization Panel (No Coding Required)**
 
-- 8-segment spinning wheel with customizable prizes
-- Chat command trigger (`!spin` by default)
-- Configurable cooldowns and user permissions
-- Multiple trigger options (chat commands, follows, donations, etc.)
-- Responsive design with random animated stars
-- Bitcount Single font for a modern look
+Your buyers get a user-friendly settings panel inside StreamElements with these options:
 
-## Installation Instructions
+### **🎯 Trigger & Command Settings**
+- **Trigger Event**: Chat Command, New Follower, Donation, Subscriber, Bits/Cheer, Manual Only
+- **Spin Command**: Customize command (default: `!spin`)
+- **Cooldown**: 0-300 seconds
+- **User Level**: Everyone, Subscribers, Moderators, Broadcaster only
+- **Spin Duration**: 2-10 seconds (adjustable)
+
+### **🎨 Visual Customization**
+- **Wheel Colors**: Primary & Secondary color pickers
+- **Text Color**: Full color customization
+- **Pointer Color**: Custom pointer/pin color
+- **Star Color**: Animated star color control
+- **Font Family**: 6 font options (Bitcount Single, Inter, Arial, etc.)
+- **Font Size**: 8-20px adjustable
+- **Wheel Size**: 200-500px responsive sizing
+
+### **📐 Layout & Positioning**
+- **Margin Top**: -50% to +50% vertical positioning
+- **Margin Left**: -50% to +50% horizontal positioning  
+- **Text Alignment**: Center, Start, End
+- **Long Text Handling**: Truncate, Wrap, or Shrink font
+
+### **🎯 Point System & Infinite Entries**
+- **Point Values**: Customizable points for follows, subs, donations, bits
+- **Infinite Entries Mode**: Users earn points to spin
+- **Manual Spin Only**: Disable auto-triggers
+
+### **✨ Effects & Animations**
+- **Confetti Effects**: Enable/disable with color customization
+- **Animated Stars**: Show/hide random stars
+- **Hide When Inactive**: Auto-hide widget option
+- **Auto-Hide Timer**: 0-60 seconds
+
+### **🏆 Prize Customization**
+- **Custom Prizes**: Easy textarea for up to 8 prizes (one per line)
+- **Emoji Support**: Full Unicode emoji support
+
+## 🚀 **Key Features for Buyers**
+
+✅ **Zero Coding Required** - Complete visual customization panel  
+✅ **Point System** - Followers, subs, donations, and bits earn points  
+✅ **Infinite Entries** - Users can spin multiple times with earned points  
+✅ **Manual Spin Mode** - Click-to-spin only option  
+✅ **Smart Positioning** - Margin & alignment controls  
+✅ **Text Overflow Handling** - Automatic text adjustment for long prizes  
+✅ **Font Customization** - Multiple font options and sizes  
+✅ **Hide When Inactive** - Auto-hide widget when not in use  
+✅ **Confetti Effects** - Celebration animations with custom colors  
+✅ **Responsive Design** - Works perfectly on all screen sizes  
+
+## 💻 **Developer Implementation**
+
+The widget uses StreamElements' `fieldData` system for buyer customization:
+
+```javascript
+const settings = {
+  spinCommand: fieldData.spinCommand || "!spin",
+  spinDuration: fieldData.spinDuration || 4,
+  wheelPrimaryColor: fieldData.wheelPrimaryColor || "#DDD6FE",
+  textColor: fieldData.textColor || "#000000",
+  // ... all 25+ customizable options
+};
+```
+
+Dynamic styling is applied automatically:
+```css
+.wheel {
+  width: ${settings.wheelSize}px;
+  height: ${settings.wheelSize}px;
+}
+
+.segment-text {
+  fill: ${settings.textColor};
+  font-size: ${settings.fontSize}px;
+}
+```
+
+## 📥 **Installation Instructions**
 
 ### Step 1: Create Custom Widget in StreamElements
 
@@ -36,49 +108,108 @@ Copy and paste the contents of `script.js` into the JS tab in StreamElements.
 #### Fields Tab
 Copy and paste the contents of `fields.json` into the Fields tab in StreamElements.
 
-### Step 3: Configure Widget Settings
+### Step 3: Buyer Customization Panel
 
-After adding the code, you'll see configuration options in the widget settings:
+After adding the code, buyers will see 25+ customization options including:
 
-- **Trigger Event**: Choose what triggers the spin (Chat Command, New Follower, Donation, etc.)
-- **Command Name**: Set your chat command (default: `!spin`)
-- **Cooldown**: Set cooldown time in seconds (default: 30 seconds)
-- **User Level Required**: Set who can use the command (Everyone, Subscribers, Mods, Broadcaster)
-- **Prize A-H**: Customize your 8 prizes
+- **🎨 Colors**: Wheel colors, text color, pointer color, star color, confetti color
+- **⚙️ Behavior**: Trigger events, commands, cooldowns, permissions, spin duration
+- **📐 Layout**: Positioning, margins, alignment, wheel size, font selection
+- **🎯 Point System**: Custom point values for followers, subs, donations, bits
+- **✨ Effects**: Confetti, stars, auto-hide, infinite entries
+- **🏆 Prizes**: Easy custom prize setup (up to 8 prizes)
 
 ### Step 4: Position and Save
 
 1. Position the widget on your overlay where you want it to appear
-2. Resize if needed (the widget is responsive)
+2. Buyers can adjust margins and positioning through the settings panel
 3. Click **Save** to apply changes
 
-## Usage
+## 🎮 **Usage Examples**
 
-### Chat Commands
-- Default command: `!spin`
-- Users type the command in chat to trigger the wheel
-- Respects cooldown and permission settings
+### Basic Chat Command
+- Viewer types: `!spin`
+- Widget spins automatically
+- Shows winning prize with confetti
 
-### Other Triggers
-You can configure the widget to spin automatically on:
-- New followers
-- Donations
-- New subscribers  
-- Bits/Cheers
+### Point System Mode
+- Enable "Infinite Entries"
+- Followers get 10 points, Subs get 25 points
+- Users spend 1 point per spin
+- Viewers build up points to spin multiple times
 
-## Customization
+### Event-Triggered Mode
+- Set trigger to "New Follower" or "Donation"
+- Wheel spins automatically on events
+- No chat command needed
 
-### Changing Prizes
-Update the prize text in the widget settings or modify the `segments` array in the JavaScript.
+### Manual Only Mode
+- Enable "Manual Spin Only"
+- Only broadcaster can click center star to spin
+- Perfect for giveaways and special events
 
-### Styling
-Modify the CSS to change colors, fonts, animations, or layout.
+## 🛠️ **Advanced Features**
 
-### Adding More Segments
-To add more than 8 segments, you'll need to:
-1. Update the SVG paths in HTML
-2. Modify the `segments` array in JavaScript
-3. Adjust the `segmentAngle` calculation (360 / number_of_segments)
+### Point System Details
+The widget includes a sophisticated point system:
+- **Followers**: Customizable points (default: 10)
+- **Subscribers**: Higher point value (default: 25)
+- **Donations**: Scales with amount (default: 50 per $1)
+- **Bits**: Scales with amount (default: 30 per 100 bits)
+- **Point Deduction**: Users spend 1 point per spin
+
+### Smart Text Handling
+Three options for long prize text:
+- **Truncate**: Adds "..." for long text
+- **Wrap**: Breaks text into multiple lines
+- **Shrink**: Automatically reduces font size
+
+### Auto-Hide System
+- **Hide When Inactive**: Widget disappears when not in use
+- **Show on Events**: Automatically appears when triggered
+- **Timer-Based**: Auto-hide after X seconds (0-60)
+
+### Dynamic Styling
+All visual elements update in real-time:
+- Colors change instantly via CSS variables
+- Font sizes scale responsively
+- Margins and positioning adjust dynamically
+- Wheel size adapts while maintaining proportions
+
+## 🎯 **Business Benefits**
+
+### For Streamers/Buyers
+- **Zero Technical Knowledge Required**: Complete visual customization
+- **Brand Matching**: Colors, fonts, and positioning match their stream
+- **Engagement Boost**: Point system encourages follows, subs, donations
+- **Flexible Usage**: Works for giveaways, games, or regular interaction
+
+### For Developers/Sellers
+- **Easy Customization**: Comprehensive fieldData implementation
+- **Professional UI**: Clean settings panel with all modern controls
+- **Scalable**: Easy to add more customization options
+- **StreamElements Compatible**: Follows all SE widget best practices
+
+## 📊 **Technical Specifications**
+
+### Performance
+- **Lightweight**: Optimized JavaScript and CSS
+- **Responsive**: Works on all devices and screen sizes
+- **Smooth Animations**: 60fps CSS3 animations
+- **Memory Efficient**: Automatic cleanup of confetti and effects
+
+### Browser Support
+- ✅ Chrome/Chromium (OBS recommended)
+- ✅ Firefox
+- ✅ Safari
+- ✅ Edge
+- ✅ Mobile browsers
+
+### StreamElements Integration
+- **Full API Support**: Uses onWidgetLoad and onEventReceived
+- **Field Validation**: All inputs validated and sanitized
+- **Error Handling**: Graceful fallbacks for missing data
+- **Debug Logging**: Console logs for troubleshooting
 
 ## Troubleshooting
 
