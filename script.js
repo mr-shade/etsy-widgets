@@ -98,10 +98,10 @@ function generateWheelSegments() {
         path.setAttribute('stroke-width', '1');
         
         // Create text element
-        const textAngle = (index * segmentAngle) + 90; // Add 90 degrees for perpendicular text
+        const textAngle = (index * segmentAngle) + (segmentAngle / 2) + 1; // Position text in center of segment
         const textRadius = 70;
-        const textX = centerX + textRadius * Math.cos((textAngle - 90 - 90) * (Math.PI / 180)); // Adjust for the 90 degree rotation
-        const textY = centerY + textRadius * Math.sin((textAngle - 90 - 90) * (Math.PI / 180));
+        const textX = centerX + textRadius * Math.cos((textAngle - 90) * (Math.PI / 180));
+        const textY = centerY + textRadius * Math.sin((textAngle - 90) * (Math.PI / 180));
         
         const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
         text.setAttribute('x', textX);
