@@ -31,30 +31,60 @@ body {
     align-items: center;
 }
 
-/* Decorative stars around the wheel */
+/* Decorative stars around the wheel circle */
 .decorative-star {
     position: absolute;
-    font-size: 24px;
+    font-size: 20px;
     color: #FFD700;
     z-index: 10;
     animation: twinkle 2s ease-in-out infinite alternate;
 }
 
-.star-left {
-    left: 80px;
-    top: 50%;
+/* Position stars around the circle perimeter - closer to wheel */
+.star-1 {
+    left: 30px;
+    top: 40%;
     transform: translateY(-50%);
+    animation: twinkle-top 2s ease-in-out infinite alternate;
     animation-delay: 0s;
 }
 
-.star-right {
-    right: 80px;
-    top: 30%;
+.star-2 {
+    right: 30px;
+    top: 40%;
     transform: translateY(-50%);
+    animation: twinkle-top 2s ease-in-out infinite alternate;
+    animation-delay: 0.5s;
+}
+
+.star-3 {
+    left: 30px;
+    bottom: 40%;
+    transform: translateY(50%);
+    animation: twinkle-bottom 2s ease-in-out infinite alternate;
     animation-delay: 1s;
 }
 
+.star-4 {
+    right: 30px;
+    bottom: 40%;
+    transform: translateY(50%);
+    animation: twinkle-bottom 2s ease-in-out infinite alternate;
+    animation-delay: 1.5s;
+}
+
 @keyframes twinkle {
+    0% { 
+        opacity: 0.6; 
+        transform: scale(1);
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1.1);
+    }
+}
+
+@keyframes twinkle-top {
     0% { 
         opacity: 0.6; 
         transform: translateY(-50%) scale(1);
@@ -62,6 +92,17 @@ body {
     100% { 
         opacity: 1; 
         transform: translateY(-50%) scale(1.1);
+    }
+}
+
+@keyframes twinkle-bottom {
+    0% { 
+        opacity: 0.6; 
+        transform: translateY(50%) scale(1);
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(50%) scale(1.1);
     }
 }
 
@@ -220,15 +261,15 @@ body {
     }
     
     .decorative-star {
-        font-size: 20px;
+        font-size: 16px;
     }
     
-    .star-left {
-        left: 60px;
+    .star-1, .star-3 {
+        left: 20px;
     }
     
-    .star-right {
-        right: 60px;
+    .star-2, .star-4 {
+        right: 20px;
     }
 }
 
@@ -249,14 +290,14 @@ body {
     }
     
     .decorative-star {
-        font-size: 16px;
+        font-size: 14px;
     }
     
-    .star-left {
-        left: 40px;
+    .star-1, .star-3 {
+        left: 15px;
     }
     
-    .star-right {
-        right: 40px;
+    .star-2, .star-4 {
+        right: 15px;
     }
 }
