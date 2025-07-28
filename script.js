@@ -43,11 +43,15 @@ function spinWheel() {
     
     // Calculate winning segment after spin completes
     setTimeout(() => {
-        // The pointer is at the top (0 degrees), so we need to calculate which segment is under it
+        // The pointer is fixed at the top, so we calculate which segment is under it
         const normalizedRotation = currentRotation % 360;
-        // Adjust for the fact that our segments start from the top and the pointer points down
-        const adjustedRotation = (360 - normalizedRotation) % 360;
-        // Each segment is 45 degrees, starting from top (0 degrees)
+        // Since the pointer is at the top (0 degrees) and segments are 45 degrees each
+        // We need to determine which segment the top pointer is pointing to
+        const segmentAngle = 45; // 360 / 8 = 45 degrees per segment
+        
+        // Calculate which segment is at the top (where the pointer points)
+        // Add 22.5 degrees to center the detection on each segment
+        const adjustedRotation = (normalizedRotation + 22.5) % 360;
         const winningSegmentIndex = Math.floor(adjustedRotation / segmentAngle) % 8;
         const winningSegment = segments[winningSegmentIndex];
         
