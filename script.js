@@ -98,7 +98,7 @@ function generateWheelSegments() {
         path.setAttribute('stroke-width', '1');
         
         // Create text element
-        const textAngle = (index * segmentAngle) + (segmentAngle / 2) + 1; // Position text in center of segment
+        const textAngle = (index * segmentAngle) + (segmentAngle / 2); // Position text in center of segment
         const textRadius = 70;
         const textX = centerX + textRadius * Math.cos((textAngle - 90) * (Math.PI / 180));
         const textY = centerY + textRadius * Math.sin((textAngle - 90) * (Math.PI / 180));
@@ -108,7 +108,7 @@ function generateWheelSegments() {
         text.setAttribute('y', textY);
         text.setAttribute('text-anchor', 'middle');
         text.setAttribute('class', 'segment-text');
-        text.setAttribute('transform', `rotate(${textAngle}, ${textX}, ${textY})`);
+        text.setAttribute('transform', `rotate(${textAngle - 90}, ${textX}, ${textY})`); // Align with radius (parallel to center line)
         text.textContent = segment.text;
         
         segmentsContainer.appendChild(path);
