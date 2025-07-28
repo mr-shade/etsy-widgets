@@ -2,16 +2,16 @@
 let isSpinning = false;
 let currentRotation = 0;
 
-// Segments data
+// Segments data with different prizes
 const segments = [
-    { text: "ABCD", value: "Segment 1" },
-    { text: "ABCD", value: "Segment 2" },
-    { text: "ABCD", value: "Segment 3" },
-    { text: "ABCD", value: "Segment 4" },
-    { text: "ABCD", value: "Segment 5" },
-    { text: "ABCD", value: "Segment 6" },
-    { text: "ABCD", value: "Segment 7" },
-    { text: "ABCD", value: "Segment 8" }
+    { text: "Prize A", value: "🎁 Congratulations! You won Prize A!" },
+    { text: "Prize B", value: "🏆 Amazing! You won Prize B!" },
+    { text: "Prize C", value: "⭐ Fantastic! You won Prize C!" },
+    { text: "Prize D", value: "🎉 Excellent! You won Prize D!" },
+    { text: "Prize E", value: "💎 Wonderful! You won Prize E!" },
+    { text: "Prize F", value: "🌟 Great job! You won Prize F!" },
+    { text: "Prize G", value: "🎊 Superb! You won Prize G!" },
+    { text: "Prize H", value: "🏅 Outstanding! You won Prize H!" }
 ];
 
 function spinWheel() {
@@ -43,14 +43,23 @@ function spinWheel() {
     
     // Calculate winning segment after spin completes
     setTimeout(() => {
+        // The pointer is at the top (0 degrees), so we need to calculate which segment is under it
         const normalizedRotation = currentRotation % 360;
-        const adjustedRotation = (360 - normalizedRotation + 90) % 360; // Adjust for pointer position
+        // Adjust for the fact that our segments start from the top and the pointer points down
+        const adjustedRotation = (360 - normalizedRotation) % 360;
+        // Each segment is 45 degrees, starting from top (0 degrees)
         const winningSegmentIndex = Math.floor(adjustedRotation / segmentAngle) % 8;
         const winningSegment = segments[winningSegmentIndex];
         
-        // Show result
-        result.textContent = `You landed on: ${winningSegment.value}!`;
+        // Show result with celebration
+        result.innerHTML = winningSegment.value;
         result.style.display = 'block';
+        
+        // Add celebration effect
+        result.classList.add('celebrate');
+        setTimeout(() => {
+            result.classList.remove('celebrate');
+        }, 1000);
         
         // Reset button
         button.disabled = false;

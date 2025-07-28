@@ -23,56 +23,61 @@
         
         <!-- Main wheel container -->
         <div class="wheel-container">
-            <!-- Location pin pointer -->
-            <div class="pointer">
-                <div class="pointer-circle"></div>
-                <div class="pointer-pin"></div>
-            </div>
-            
             <!-- Prize wheel -->
             <svg class="wheel" id="wheel" width="300" height="300" viewBox="0 0 300 300">
                 <!-- Wheel segments -->
                 <g class="segments">
                     <!-- Segment 1 - Lavender (Top) -->
                     <path d="M 150,150 L 150,50 A 100,100 0 0,1 220.71,79.29 Z" fill="#DDD6FE" stroke="#000" stroke-width="1"/>
-                    <text x="175" y="90" text-anchor="middle" class="segment-text" transform="rotate(112.5, 175, 90)">ABCD</text>
+                    <text x="175" y="90" text-anchor="middle" class="segment-text" transform="rotate(112.5, 175, 90)">Prize A</text>
                     
                     <!-- Segment 2 - Periwinkle (Top Right) -->
                     <path d="M 150,150 L 220.71,79.29 A 100,100 0 0,1 250,150 Z" fill="#C4B5FD" stroke="#000" stroke-width="1"/>
-                    <text x="210" y="125" text-anchor="middle" class="segment-text" transform="rotate(157.5, 210, 125)">ABCD</text>
+                    <text x="210" y="125" text-anchor="middle" class="segment-text" transform="rotate(157.5, 210, 125)">Prize B</text>
                     
                     <!-- Segment 3 - Lilac (Right) -->
                     <path d="M 150,150 L 250,150 A 100,100 0 0,1 220.71,220.71 Z" fill="#DDD6FE" stroke="#000" stroke-width="1"/>
-                    <text x="210" y="175" text-anchor="middle" class="segment-text" transform="rotate(202.5, 210, 175)">ABCD</text>
+                    <text x="210" y="175" text-anchor="middle" class="segment-text" transform="rotate(202.5, 210, 175)">Prize C</text>
                     
                     <!-- Segment 4 - Periwinkle (Bottom Right) -->
                     <path d="M 150,150 L 220.71,220.71 A 100,100 0 0,1 150,250 Z" fill="#C4B5FD" stroke="#000" stroke-width="1"/>
-                    <text x="175" y="210" text-anchor="middle" class="segment-text" transform="rotate(247.5, 175, 210)">ABCD</text>
+                    <text x="175" y="210" text-anchor="middle" class="segment-text" transform="rotate(247.5, 175, 210)">Prize D</text>
                     
                     <!-- Segment 5 - Lavender (Bottom) -->
                     <path d="M 150,150 L 150,250 A 100,100 0 0,1 79.29,220.71 Z" fill="#DDD6FE" stroke="#000" stroke-width="1"/>
-                    <text x="125" y="210" text-anchor="middle" class="segment-text" transform="rotate(292.5, 125, 210)">ABCD</text>
+                    <text x="125" y="210" text-anchor="middle" class="segment-text" transform="rotate(292.5, 125, 210)">Prize E</text>
                     
                     <!-- Segment 6 - Periwinkle (Bottom Left) -->
                     <path d="M 150,150 L 79.29,220.71 A 100,100 0 0,1 50,150 Z" fill="#C4B5FD" stroke="#000" stroke-width="1"/>
-                    <text x="90" y="175" text-anchor="middle" class="segment-text" transform="rotate(337.5, 90, 175)">ABCD</text>
+                    <text x="90" y="175" text-anchor="middle" class="segment-text" transform="rotate(337.5, 90, 175)">Prize F</text>
                     
                     <!-- Segment 7 - Lilac (Left) -->
                     <path d="M 150,150 L 50,150 A 100,100 0 0,1 79.29,79.29 Z" fill="#DDD6FE" stroke="#000" stroke-width="1"/>
-                    <text x="90" y="125" text-anchor="middle" class="segment-text" transform="rotate(22.5, 90, 125)">ABCD</text>
+                    <text x="90" y="125" text-anchor="middle" class="segment-text" transform="rotate(22.5, 90, 125)">Prize G</text>
                     
                     <!-- Segment 8 - Periwinkle (Top Left) -->
                     <path d="M 150,150 L 79.29,79.29 A 100,100 0 0,1 150,50 Z" fill="#C4B5FD" stroke="#000" stroke-width="1"/>
-                    <text x="125" y="90" text-anchor="middle" class="segment-text" transform="rotate(67.5, 125, 90)">ABCD</text>
+                    <text x="125" y="90" text-anchor="middle" class="segment-text" transform="rotate(67.5, 125, 90)">Prize H</text>
                 </g>
                 
                 <!-- White border around wheel -->
                 <circle cx="150" cy="150" r="100" fill="none" stroke="#fff" stroke-width="8"/>
                 <circle cx="150" cy="150" r="104" fill="none" stroke="#000" stroke-width="2"/>
                 
+                <!-- Pointer attached to the wheel border -->
+                <g class="pointer-group">
+                    <circle cx="150" cy="46" r="12" fill="#8B5CF6" stroke="#fff" stroke-width="2"/>
+                    <polygon points="150,58 142,72 158,72" fill="#8B5CF6" stroke="#fff" stroke-width="1"/>
+                </g>
+                
                 <!-- Center hub -->
                 <circle cx="150" cy="150" r="20" fill="#8B5CF6" stroke="#000" stroke-width="2"/>
-                <text x="150" y="156" text-anchor="middle" class="star-text">⭐</text>
+                
+                <!-- SVG Star in center -->
+                <g transform="translate(150, 150)">
+                    <path d="M0,-12 L3.5,-3.5 L12,0 L3.5,3.5 L0,12 L-3.5,3.5 L-12,0 L-3.5,-3.5 Z" 
+                          fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
+                </g>
             </svg>
         </div>
         
