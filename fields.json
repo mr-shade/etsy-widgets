@@ -1,0 +1,87 @@
+[
+  {
+    "type": "dropdown",
+    "label": "Trigger Event",
+    "name": "triggerEvent",
+    "value": "command",
+    "options": {
+      "command": "Chat Command (!spin)",
+      "follow": "New Follower",
+      "donation": "Donation",
+      "subscriber": "New Subscriber",
+      "cheer": "Bits/Cheer"
+    }
+  },
+  {
+    "type": "text",
+    "label": "Command Name",
+    "name": "commandName",
+    "value": "!spin"
+  },
+  {
+    "type": "number",
+    "label": "Cooldown (seconds)",
+    "name": "cooldown",
+    "value": 30
+  },
+  {
+    "type": "dropdown",
+    "label": "User Level Required",
+    "name": "userLevel",
+    "value": "everyone",
+    "options": {
+      "everyone": "Everyone",
+      "subscriber": "Subscribers Only",
+      "moderator": "Moderators Only",
+      "broadcaster": "Broadcaster Only"
+    }
+  },
+  {
+    "type": "text",
+    "label": "Prize A",
+    "name": "prizeA",
+    "value": "🎁 Prize A"
+  },
+  {
+    "type": "text",
+    "label": "Prize B",
+    "name": "prizeB",
+    "value": "🏆 Prize B"
+  },
+  {
+    "type": "text",
+    "label": "Prize C",
+    "name": "prizeC",
+    "value": "⭐ Prize C"
+  },
+  {
+    "type": "text",
+    "label": "Prize D",
+    "name": "prizeD",
+    "value": "🎉 Prize D"
+  },
+  {
+    "type": "text",
+    "label": "Prize E",
+    "name": "prizeE",
+    "value": "💎 Prize E"
+  },
+  {
+    "type": "text",
+    "label": "Prize F",
+    "name": "prizeF",
+    "value": "🌟 Prize F"
+  },
+  {
+    "type": "text",
+    "label": "Prize G",
+    "name": "prizeG",
+    "value": "🎊 Prize G"
+  },
+  {
+    "type": "text",
+    "label": "Prize H",
+    "name": "prizeH",
+    "value": "🏅 Prize H"
+  }
+]

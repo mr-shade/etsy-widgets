@@ -1,4 +1,4 @@
-// Prize Wheel with Spinning Functionality
+// Prize Wheel with Spinning Functionality for StreamElements
 let isSpinning = false;
 let currentRotation = 0;
 
@@ -13,6 +13,111 @@ const segments = [
     { text: "Prize G", value: "🎊 Superb! You won Prize G!" },
     { text: "Prize H", value: "🏅 Outstanding! You won Prize H!" }
 ];
+
+// StreamElements Widget API Integration
+let fieldData = {};
+let cooldownActive = false;
+
+window.addEventListener('onWidgetLoad', function (obj) {
+    // Store field data from StreamElements settings
+    fieldData = obj.detail.fieldData;
+    
+    // Update segments with custom prizes if configured
+    if (fieldData) {
+        if (fieldData.prizeA) segments[0].value = `🎁 ${fieldData.prizeA}`;
+        if (fieldData.prizeB) segments[1].value = `🏆 ${fieldData.prizeB}`;
+        if (fieldData.prizeC) segments[2].value = `⭐ ${fieldData.prizeC}`;
+        if (fieldData.prizeD) segments[3].value = `🎉 ${fieldData.prizeD}`;
+        if (fieldData.prizeE) segments[4].value = `💎 ${fieldData.prizeE}`;
+        if (fieldData.prizeF) segments[5].value = `🌟 ${fieldData.prizeF}`;
+        if (fieldData.prizeG) segments[6].value = `🎊 ${fieldData.prizeG}`;
+        if (fieldData.prizeH) segments[7].value = `🏅 ${fieldData.prizeH}`;
+    }
+    
+    console.log('StreamElements Spin Wheel Widget Loaded');
+});
+
+// Listen for StreamElements events (chat commands, follows, donations, etc.)
+window.addEventListener('onEventReceived', function (obj) {
+    if (!obj.detail.event) return;
+    
+    const event = obj.detail.event;
+    const data = obj.detail;
+    
+    // Handle different event types based on configuration
+    const triggerEvent = fieldData.triggerEvent || 'command';
+    
+    if (triggerEvent === 'command' && event.type === 'message') {
+        handleChatCommand(event);
+    } else if (triggerEvent === 'follow' && event.type === 'follow') {
+        spinWheelWithDelay();
+    } else if (triggerEvent === 'donation' && event.type === 'donation') {
+        spinWheelWithDelay();
+    } else if (triggerEvent === 'subscriber' && event.type === 'subscriber') {
+        spinWheelWithDelay();
+    } else if (triggerEvent === 'cheer' && event.type === 'cheer') {
+        spinWheelWithDelay();
+    }
+});
+
+function handleChatCommand(event) {
+    const message = event.data.text.toLowerCase().trim();
+    const commandName = (fieldData.commandName || '!spin').toLowerCase();
+    
+    // Check if message matches the command
+    if (message === commandName || message.startsWith(commandName + ' ')) {
+        // Check cooldown
+        if (cooldownActive) {
+            console.log('Spin wheel on cooldown');
+            return;
+        }
+        
+        // Check user level permissions
+        const userLevel = fieldData.userLevel || 'everyone';
+        const userData = event.data;
+        
+        if (!checkPermissions(userData, userLevel)) {
+            console.log('User does not have permission to use spin wheel');
+            return;
+        }
+        
+        spinWheelWithDelay();
+        applyCooldown();
+    }
+}
+
+function checkPermissions(userData, requiredLevel) {
+    switch (requiredLevel) {
+        case 'broadcaster':
+            return userData.badges && userData.badges.broadcaster;
+        case 'moderator':
+            return (userData.badges && userData.badges.broadcaster) || 
+                   (userData.badges && userData.badges.moderator);
+        case 'subscriber':
+            return (userData.badges && userData.badges.broadcaster) || 
+                   (userData.badges && userData.badges.moderator) ||
+                   (userData.badges && userData.badges.subscriber);
+        case 'everyone':
+        default:
+            return true;
+    }
+}
+
+function applyCooldown() {
+    const cooldownTime = (fieldData.cooldown || 30) * 1000; // Convert to milliseconds
+    cooldownActive = true;
+    
+    setTimeout(() => {
+        cooldownActive = false;
+    }, cooldownTime);
+}
+
+function spinWheelWithDelay() {
+    // Add a small delay to make it feel more natural
+    setTimeout(() => {
+        spinWheel();
+    }, 500);
+}
 
 function spinWheel() {
     if (isSpinning) return;
